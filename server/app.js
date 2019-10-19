@@ -6,6 +6,18 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+// CORS walkaround
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  next();
+});
+
 // Body parser
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
