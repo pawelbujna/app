@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.scss';
+import React from 'react'
+import './App.scss'
 
 import Nav from './components/widgets/nav/Nav'
 
@@ -7,12 +7,12 @@ import Home from './components/views/home/Home'
 import Users from './components/views/users/Users'
 import AddUser from './components/views/add-user/AddUser'
 
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App () {
   return (
     <Router>
-      <div className="App">
+      <div>
         <Nav />
         <Switch>
           <Route path="/" component={Home} exact />
@@ -21,7 +21,7 @@ function App () {
         </Switch>
       </div>
     </Router>
-  );
+  )
 }
 
 export default App

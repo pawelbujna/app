@@ -1,11 +1,13 @@
 import React from 'react'
 
+import Container from 'components/common/container/Container'
+
 function AddUser () {
   return (
-    <div>
+    <Container>
       Add user
-    </div>
-  );
+    </Container>
+  )
 }
 
 export default AddUser

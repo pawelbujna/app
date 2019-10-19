@@ -1,0 +1,10 @@
+.navigation {
+  display: flex;
+  height: 50px; }
+  .navigation ul {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end; }
+    .navigation ul li {
+      padding: 10px;
+      list-style: none; }
