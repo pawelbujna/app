@@ -8,7 +8,6 @@ import Container from 'components/common/container/Container'
 function Nav () {
   return (
     <Container>
-
       <nav className="navigation">
         <h3>DBschenker</h3>
 
