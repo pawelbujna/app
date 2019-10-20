@@ -2,8 +2,8 @@ import './Users.scss'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import httpApi from 'api/httpApi'
-import routes from 'api/routes'
+import httpApi from 'helpers/httpApi'
+import usersApi from 'api/usersApi'
 
 import Container from 'components/common/container/Container'
 
@@ -12,7 +12,7 @@ function Users() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const result = await httpApi.get(routes.users)
+      const result = await httpApi.get(usersApi.get)
 
       setData(result.data)
     }
