@@ -8,7 +8,7 @@
     "react"
   ],
   "rules": {
-    "space-in-parens": [ 0, "always" ],
+    "space-in-parens": [ 2, "never" ],
     "template-curly-spacing": [ 2, "always" ],
     "array-bracket-spacing": [ 0, "never" ],
     "object-curly-spacing": [ 2, "always" ],

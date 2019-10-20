@@ -4,7 +4,7 @@ require('dotenv/config')
 // General Imports
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 
 // CORS walkaround
 app.all('*', function (req, res, next) {

@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react'
 import './Users.scss'
-
-import axios from 'axios'
-
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
+import httpApi from 'api/httpApi'
+import routes from 'api/routes'
 
 import Container from 'components/common/container/Container'
 
-function Users () {
+function Users() {
   const [data, setData] = useState()
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const result = await axios.get('http://localhost:3000/users')
+      const result = await httpApi.get(routes.users)
 
       setData(result.data)
     }
