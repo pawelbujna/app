@@ -7,7 +7,7 @@ import usersApi from 'api/usersApi'
 
 import Container from 'components/common/container/Container'
 
-function Users() {
+function Users () {
   const [data, setData] = useState()
 
   useEffect(() => {

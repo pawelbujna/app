@@ -36,7 +36,13 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true
   },
-  () => { console.log(`Mongoose connected to ${process.env.DB_CONNECTION}`) }
+  (err) => {
+    if (err) {
+      console.log('Some problem with the connection ' + err);
+    } else {
+      console.log('The Mongoose connection is ready');
+    }
+  }
 )
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))

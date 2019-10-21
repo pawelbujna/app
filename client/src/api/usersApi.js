@@ -1,14 +1,14 @@
 import config from 'api/config'
 
 class usersApi {
-  usersApiUrl = '/users'
+  static usersApiUrl = '/users'
 
-  static get get() {
-    return config.mainPath + this.usersApiRul
+  static get get () {
+    return config.mainPath + this.usersApiUrl
   }
 
-  static get add() {
-    return config.mainPath + this.usersApiRul + '/add'
+  static get add () {
+    return config.mainPath + this.usersApiUrl + '/add'
   }
 }
 

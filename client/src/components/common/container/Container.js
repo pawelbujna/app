@@ -12,7 +12,7 @@ function Container (props) {
 }
 
 Container.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.node
 }
 
 export default Container

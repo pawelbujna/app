@@ -19,15 +19,13 @@ router.post("/add", async (req, res, next) => {
     surname: req.body.surname
   })
 
-  user
-    .save()
-    .then(() => {
-      res.sendStatus(200)
-    })
-    .catch(err => {
-      console.log(err)
-      res.json({ message: err })
-    })
+  try {
+    await user.save()
+    res.sendStatus(200)
+  } catch (error) {
+    res.json({ message: error })
+  }
+
 })
 
 module.exports = router
