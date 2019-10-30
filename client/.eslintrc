@@ -32,6 +32,7 @@
   },
   "globals": {
     "console": true,
-    "alert": true
+    "alert": true,
+    "document": true
   }
 }
