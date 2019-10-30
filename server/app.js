@@ -33,6 +33,7 @@ const mongoose = require('mongoose')
 mongoose.connect(
   process.env.DB_CONNECTION,
   {
+    useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true
   },
