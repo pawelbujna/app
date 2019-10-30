@@ -2,7 +2,6 @@ import './User.scss'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import httpApi from 'helpers/httpApi'
 import usersApi from 'api/usersApi'
 
 import Container from 'components/common/container/Container'
@@ -16,18 +15,29 @@ function User() {
   const [user, setUser] = useState({ name: '', surname: '' })
 
   const fetchUser = async () => {
-    const res = await httpApi.get(usersApi.get + paramId)
-    console.log(res)
+    const res = await usersApi.get(paramId)
     setUser(res.data)
   }
 
   useEffect(() => {
+    console.log('firstRun: ', user)
     fetchUser()
+    // eslint-disable-next-line
   }, [])
 
+  const setName = (event) => {
+    setUser({ name: event.target.value })
+  }
+
+  const setSurname = (event) => {
+    setUser({ surname: event.target.value })
+  }
+
   const updateUser = async () => {
-    await httpApi.post(usersApi.save, user)
+    await usersApi.save(user)
+
     setIsEditing(false)
+
     await fetchUser()
   }
 
@@ -42,13 +52,14 @@ function User() {
         )
         : (
           <div>
-            <Input value={user.name} onChange={(e) => { setUser({ name: e.target.value }) }} />
+            {user.name}
+            <Input value={user.name} onChange={setName} />
+            <Input value={user.surname} onChange={setSurname} />
             <Button onClick={updateUser} label="Zapisz" />
             <Button onClick={() => { setIsEditing(false) }} label="Anuluj" />
           </div>
         )
       }
-
     </Container>
   )
 }

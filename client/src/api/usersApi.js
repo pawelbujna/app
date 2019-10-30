@@ -1,22 +1,44 @@
 import config from 'api/config'
+import httpApi from 'helpers/httpApi'
 
 class usersApi {
   static usersApiUrl = '/users/'
 
-  static get get() {
-    return config.mainPath + this.usersApiUrl
+  static async get(id) {
+    try {
+      const res = await httpApi.get(config.mainPath + this.usersApiUrl + id)
+      return res
+    } catch (error) {
+      return error
+    }
   }
 
-  static get getAll() {
-    return config.mainPath + this.usersApiUrl
+  static async getAll() {
+    console.log('test')
+    try {
+      const res = await httpApi.get(config.mainPath + this.usersApiUrl)
+      return res
+    } catch (error) {
+      return error
+    }
   }
 
-  static get add() {
-    return config.mainPath + this.usersApiUrl + '/add/'
+  static async add(user) {
+    try {
+      const res = await httpApi.post(config.mainPath + this.usersApiUrl + '/add/', user)
+      return res
+    } catch (error) {
+      return error
+    }
   }
 
-  static get save() {
-    return config.mainPath + this.usersApiUrl + '/save/'
+  static async save(user) {
+    try {
+      const res = await httpApi.post(config.mainPath + this.usersApiUrl + '/save/', user)
+      return res
+    } catch (error) {
+      return error
+    }
   }
 }
 

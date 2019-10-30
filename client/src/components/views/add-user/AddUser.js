@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
 
-import httpApi from 'helpers/httpApi'
 import usersApi from 'api/usersApi'
 
 import Container from 'components/common/container/Container'
 import Input from 'components/common/input/Input'
 import Button from 'components/common/button/Button'
 
-function AddUser () {
+function AddUser() {
   const [inputs, setInputs] = useState({ name: '', surname: '' })
 
   const saveUser = async (event) => {
     event.preventDefault()
 
     try {
-      await httpApi.post(usersApi.add, inputs)
+      await usersApi.add(inputs)
     } catch (error) {
       console.log(error)
     }

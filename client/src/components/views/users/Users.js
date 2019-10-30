@@ -2,7 +2,6 @@ import './Users.scss'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import httpApi from 'helpers/httpApi'
 import usersApi from 'api/usersApi'
 
 import Container from 'components/common/container/Container'
@@ -13,8 +12,8 @@ function Users() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const result = await httpApi.get(usersApi.get)
-
+      const result = await usersApi.getAll()
+      
       setData(result.data)
     }
     fetchUsers()
