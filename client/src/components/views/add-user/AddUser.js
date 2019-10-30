@@ -31,7 +31,6 @@ function AddUser() {
         roles: inputs.roles.filter(item => item !== event.target.value)
       })
     }
-    console.log(inputs)
   }
 
   const handleInputChange = (event) => {
