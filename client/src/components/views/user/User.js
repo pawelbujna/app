@@ -26,11 +26,11 @@ function User() {
   }, [])
 
   const setName = (event) => {
-    setUser({ name: event.target.value })
+    setUser({ ...user, name: event.target.value })
   }
 
   const setSurname = (event) => {
-    setUser({ surname: event.target.value })
+    setUser({ ...user, surname: event.target.value })
   }
 
   const updateUser = async () => {

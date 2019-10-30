@@ -14,7 +14,6 @@ class usersApi {
   }
 
   static async getAll() {
-    console.log('test')
     try {
       const res = await httpApi.get(config.mainPath + this.usersApiUrl)
       return res
