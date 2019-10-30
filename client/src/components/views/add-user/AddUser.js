@@ -8,25 +8,7 @@ import Button from 'components/common/button/Button'
 import Checkbox from 'components/common/checkbox/Checkbox'
 
 function AddUser() {
-  const roles = [
-    {
-      name: 'manewrowy',
-      role: 'ROLE1'
-    },
-    {
-      name: 'shunter',
-      role: 'ROLE2'
-    },
-    {
-      name: 'train_manager',
-      role: 'ROLE3'
-    },
-    {
-      name: 'dupa',
-      role: 'ROLE4'
-    }
-  ]
-  const [inputs, setInputs] = useState({})
+  const [inputs, setInputs] = useState({ roles: [] })
 
   const saveUser = async (event) => {
     event.preventDefault()
@@ -38,9 +20,22 @@ function AddUser() {
     }
   }
 
+  const handleChackBoxChange = (event) => {
+    event.persist()
+    if(event.target.checked) {
+      setInputs({
+          roles: [...inputs.roles, event.target.value]
+        })
+    } else {
+      setInputs({
+        roles: inputs.roles.filter(item => item !== event.target.value)
+      })
+    }
+  }
+
   const handleInputChange = (event) => {
     event.persist()
-    setInputs({ ...inputs, [event.target.name]: event.target.value })
+    setInputs({ [event.target.name]: event.target.value })
   }
 
   const handleSubmit = (event) => {
@@ -52,10 +47,9 @@ function AddUser() {
       <form onSubmit={handleSubmit}>
         <Input label="Imie" name="name" value={inputs.name} onChange={handleInputChange} />
         <Input label="Nazwisko" name="surname" value={inputs.surname} onChange={handleInputChange} />
-{/*
-        {roles.map(item => (
-          <Checkbox key={item.name} name={item.name}  />
-        ))} */}
+
+           <Checkbox key="manewrowy" name="manewrowy" value="manewrowy" onChange={handleChackBoxChange}  />
+           <Checkbox key="ustawiacz" name="ustawiacz" value="ustawiacz" onChange={handleChackBoxChange}  />
 
         <Button label="Zapisz" type="submit" />
       </form>
