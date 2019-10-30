@@ -12,7 +12,7 @@ function User() {
   const { id } = useParams()
   const [isEditing, setIsEditing] = useState(false)
   const [paramId] = useState(id)
-  const [user, setUser] = useState({ name: '', surname: '' })
+  const [user, setUser] = useState({})
 
   const fetchUser = async () => {
     const res = await usersApi.get(paramId)
@@ -24,12 +24,9 @@ function User() {
     // eslint-disable-next-line
   }, [])
 
-  const setName = (event) => {
-    setUser({ ...user, name: event.target.value })
-  }
-
-  const setSurname = (event) => {
-    setUser({ ...user, surname: event.target.value })
+  const handleInputChange = (event) => {
+    event.persist()
+    setUser({ ...user, [event.target.name]: event.target.value })
   }
 
   const updateUser = async () => {
@@ -52,8 +49,8 @@ function User() {
         : (
           <div>
             {user.name}
-            <Input value={user.name} onChange={setName} />
-            <Input value={user.surname} onChange={setSurname} />
+            <Input value={user.name} onChange={handleInputChange} />
+            <Input value={user.surname} onChange={handleInputChange} />
             <Button onClick={updateUser} label="Zapisz" />
             <Button onClick={() => { setIsEditing(false) }} label="Anuluj" />
           </div>

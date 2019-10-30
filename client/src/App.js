@@ -20,8 +20,8 @@ function App() {
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/users" component={Users} exact />
-          <Route path="/users/:id" component={User} />
-          <Route path="/users/add" component={AddUser} />
+          <Route path="/users/edit/:id" component={User} exact />
+          <Route path="/users/add" component={AddUser} exact />
           <Route path="*" component={NoMatch} />
         </Switch>
       </div>
