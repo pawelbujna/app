@@ -2,5 +2,6 @@
   "eslint.workingDirectories": [
     "client",
     "server"
-  ]
+  ],
+  "npm-scripts.showStartNotification": false
 }

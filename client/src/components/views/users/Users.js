@@ -6,8 +6,9 @@ import httpApi from 'helpers/httpApi'
 import usersApi from 'api/usersApi'
 
 import Container from 'components/common/container/Container'
+import Button from 'components/common/button/Button'
 
-function Users () {
+function Users() {
   const [data, setData] = useState()
 
   useEffect(() => {
@@ -22,18 +23,21 @@ function Users () {
   return (
     <Container>
       <Link to="/users/add">
-        <button>Add user</button>
+        <Button label="Dodaj" />
       </Link>
       <div>
         <ul>
           {data ? data.map(item => (
             <li key={item.name}>
               {item.name}
+              <Link to={'/users/' + item._id}>
+                <Button label="Edytuj" />
+              </Link>
             </li>
           )) : null}
         </ul>
       </div>
-    </Container>
+    </Container >
   )
 }
 
