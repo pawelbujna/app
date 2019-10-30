@@ -20,7 +20,6 @@ function User() {
   }
 
   useEffect(() => {
-    console.log('firstRun: ', user)
     fetchUser()
     // eslint-disable-next-line
   }, [])
