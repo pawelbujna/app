@@ -20,10 +20,10 @@ function AddUser() {
     }
   }
 
-  const handleChackBoxChange = (event) => {
-    event.persist()
+  const handleCheckBoxChange = (event) => {
     if(event.target.checked) {
       setInputs({
+          ...inputs, 
           roles: [...inputs.roles, event.target.value]
         })
     } else {
@@ -34,8 +34,7 @@ function AddUser() {
   }
 
   const handleInputChange = (event) => {
-    event.persist()
-    setInputs({ [event.target.name]: event.target.value })
+    setInputs({ ...inputs, [event.target.name]: event.target.value })
   }
 
   const handleSubmit = (event) => {
@@ -45,11 +44,11 @@ function AddUser() {
   return (
     <Container>
       <form onSubmit={handleSubmit}>
-        <Input label="Imie" name="name" value={inputs.name} onChange={handleInputChange} />
-        <Input label="Nazwisko" name="surname" value={inputs.surname} onChange={handleInputChange} />
+        <Input label="Imie" name="name" onChange={handleInputChange} />
+        <Input label="Nazwisko" name="surname" onChange={handleInputChange} />
 
-           <Checkbox label="manewrowy" name="manewrowy" value="manewrowy" onChange={handleChackBoxChange}  />
-           <Checkbox label="ustawiacz" name="ustawiacz" value="ustawiacz" onChange={handleChackBoxChange}  />
+           <Checkbox label="manewrowy" name="manewrowy" value="manewrowy" onChange={handleCheckBoxChange}  />
+           <Checkbox label="ustawiacz" name="ustawiacz" value="ustawiacz" onChange={handleCheckBoxChange}  />
 
         <Button label="Zapisz" type="submit" />
       </form>

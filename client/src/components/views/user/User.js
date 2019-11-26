@@ -16,16 +16,16 @@ function User() {
 
   const fetchUser = async () => {
     const res = await usersApi.get(paramId)
+    console.log(res.data)
     setUser(res.data)
   }
 
   useEffect(() => {
     fetchUser()
-    // eslint-disable-next-line
   }, [])
 
   const handleInputChange = (event) => {
-    event.persist()
+    console.log(user)
     setUser({ ...user, [event.target.name]: event.target.value })
   }
 
@@ -49,8 +49,8 @@ function User() {
         : (
           <div>
             {user.name}
-            <Input value={user.name} onChange={handleInputChange} />
-            <Input value={user.surname} onChange={handleInputChange} />
+            <Input value={user.name} name="name" onChange={handleInputChange} />
+            <Input value={user.surname} name="surname" onChange={handleInputChange} />
             <Button onClick={updateUser} label="Zapisz" />
             <Button onClick={() => { setIsEditing(false) }} label="Anuluj" />
           </div>
