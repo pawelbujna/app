@@ -25,7 +25,8 @@ router.get("/:id", async (req, res, next) => {
 router.post("/add", async (req, res, next) => {
   const user = new User({
     name: req.body.name,
-    surname: req.body.surname
+    surname: req.body.surname,
+    roles: req.body.roles
   })
 
   try {

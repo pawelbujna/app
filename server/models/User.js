@@ -8,6 +8,10 @@ const UserSchema = mongoose.Schema({
   surname: {
     type: String,
     required: true
+  },
+  roles: {
+    type: Array,
+    required: true
   }
 })
 
