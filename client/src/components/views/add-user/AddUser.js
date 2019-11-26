@@ -48,8 +48,8 @@ function AddUser() {
         <Input label="Imie" name="name" value={inputs.name} onChange={handleInputChange} />
         <Input label="Nazwisko" name="surname" value={inputs.surname} onChange={handleInputChange} />
 
-           <Checkbox key="manewrowy" name="manewrowy" value="manewrowy" onChange={handleChackBoxChange}  />
-           <Checkbox key="ustawiacz" name="ustawiacz" value="ustawiacz" onChange={handleChackBoxChange}  />
+           <Checkbox label="manewrowy" name="manewrowy" value="manewrowy" onChange={handleChackBoxChange}  />
+           <Checkbox label="ustawiacz" name="ustawiacz" value="ustawiacz" onChange={handleChackBoxChange}  />
 
         <Button label="Zapisz" type="submit" />
       </form>
