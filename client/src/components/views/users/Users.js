@@ -13,7 +13,7 @@ function Users() {
   useEffect(() => {
     const fetchUsers = async () => {
       const result = await usersApi.getAll()
-
+      
       setData(result.data)
     }
     fetchUsers()
