@@ -1,56 +1,69 @@
-import React, { useState } from 'react'
+import React from 'react'
+import useForm from 'react-hook-form'
 
 import usersApi from 'api/usersApi'
 
 import Container from 'components/common/container/Container'
 import Input from 'components/common/input/Input'
-import Button from 'components/common/button/Button'
 import Checkbox from 'components/common/checkbox/Checkbox'
 
 function AddUser() {
-  const [inputs, setInputs] = useState({ roles: [] })
+  const { register, handleSubmit, errors } = useForm()
 
-  const saveUser = async (event) => {
-    event.preventDefault()
-
+  const saveUser = async (userData) => {
     try {
-      await usersApi.add(inputs)
+      await usersApi.add(userData)
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleCheckBoxChange = (event) => {
-    if(event.target.checked) {
-      setInputs({
-          ...inputs, 
-          roles: [...inputs.roles, event.target.value]
-        })
-    } else {
-      setInputs({
-        roles: inputs.roles.filter(item => item !== event.target.value)
-      })
+  const prepareData = (userData) => {
+    const user = {
+      firstname: userData.firstname,
+      lastname: userData.lastname,
+      roles: []
     }
+
+    userData.manewrowy && user.roles.push('manewrowy')
+    userData.ustawiacz && user.roles.push('ustawiacz')
+
+    return user
   }
 
-  const handleInputChange = (event) => {
-    setInputs({ ...inputs, [event.target.name]: event.target.value })
-  }
-
-  const handleSubmit = (event) => {
-    saveUser(event)
+  const onSubmit = (userData) => {
+    const user = prepareData(userData)
+    
+    console.log(user)
+    // saveUser(user) // TODO: changed name to firstname and surname to lastname. Adjust model on BE.
   }
 
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
-        <Input label="Imie" name="name" onChange={handleInputChange} />
-        <Input label="Nazwisko" name="surname" onChange={handleInputChange} />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          label="Imie"
+          name="firstname"
+          errors={errors}
+          validationRef={register({ required: true })} />
 
-           <Checkbox label="manewrowy" name="manewrowy" value="manewrowy" onChange={handleCheckBoxChange}  />
-           <Checkbox label="ustawiacz" name="ustawiacz" value="ustawiacz" onChange={handleCheckBoxChange}  />
+        <Input
+          label="Nazwisko"
+          name="lastname"
+          errors={errors}
+          validationRef={register({ required: true })} />
 
-        <Button label="Zapisz" type="submit" />
+        <Checkbox
+          label="manewrowy"
+          name="manewrowy"
+          validationRef={register} />
+
+        <Checkbox
+          label="ustawiacz"
+          name="ustawiacz"
+          validationRef={register} />
+
+        <input type="submit" value="Zapisz" />
       </form>
     </Container>
   )

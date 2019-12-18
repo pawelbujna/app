@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function Input ({ label, name, onChange, value }) {
+function Input({ label, name, validationRef, errors }) {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
       <div>
-        <input type="text" id={name} name={name} value={value} onChange={onChange} />
+        <input type="text" id={name} name={name} ref={validationRef} />
+        {errors && errors[name] && <span>This field is required</span>}
       </div>
     </div>
   )
@@ -15,8 +16,8 @@ function Input ({ label, name, onChange, value }) {
 Input.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func
+  validationRef: PropTypes.func,
+  errors: PropTypes.object
 }
 
 export default Input
