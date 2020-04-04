@@ -13,7 +13,7 @@ function Users() {
   useEffect(() => {
     const fetchUsers = async () => {
       const result = await usersApi.getAll()
-      
+
       setData(result.data)
     }
     fetchUsers()
@@ -30,7 +30,7 @@ function Users() {
             <li key={item.name}>
               {item.name}
               <Link to={'/users/edit/' + item._id}>
-                <Button label="Edytuj" />
+                <Button label="Edytuj" /> 
               </Link>
             </li>
           )) : null}
